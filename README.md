@@ -6,7 +6,7 @@ It is made on **[Babel](https://babeljs.io/)** which compiles modern JavaScript 
 
 It's recommended to use **[Visual Studio Code](https://code.visualstudio.com/download)** for better development experience. Code **linter** uses **Google's style** recommendations with some little changes that can be found in **.eslintrc** within "rules" object.
 
-One of workspace's most relevant features is "**hot reload**": everytime a file is saved it will be authomatically compiled and a new build will be available within dist/ folder without run manually any build command from terminal.
+One of workspace's most relevant features is "**hot reload**": everytime a file is saved it will be authomatically compiled and a new build will be available within dist/ folder without run manually any build command from terminal again.
 
 This workspace is suitable for everyone are looking for a minimal ready to use JavaScript development envirnoment. It's is perfect to develop JS libraries but can be also used as starting tool for any particular needs. It can be customized in according to developers needs adding other software as such as broserify or sass compiler.
 
@@ -44,8 +44,8 @@ Run **one** of the following command:
 
 ## Get started
 
-- Let's start coding creating **new .js files** within **src/** folder. As you can see, 
-**index.js** file represents the **entry point** of the application workspace and **must always** be under **src/ folder**. **All public files must be imported within index.js**. Generated **bundle** can be found within **dist/** (it's default name is "**index.js**"). It has also a **commented header** which takes info from **package.json** . Feel free to **replace default info** with the new ones.
+- Let's start to code and create **new .js files** within **src/** folder. As you can see, 
+**index.js** file represents the **entry point** of the application workspace and **must always** be under **src/ folder**. **All public files must be imported within index.js**. The output **bundle** can be found within **dist/** (it's default name is "**index.js**"). It has also a **commented header** which takes info from **package.json** . Feel free to **replace default info** with the new ones.
 
 - Start compiler: `npm run build` 
 
