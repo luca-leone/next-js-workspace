@@ -32,7 +32,7 @@ This workspace is suitable for everyone are looking for a minimal ready to use J
 ## Requirements
 
 - Download and install Node.js. **[Node.js v4+](https://nodejs.org/en/)** is required.
-- Use a **package manager**. **[npm](https://www.npmjs.com/)** is provided together with Node.js . Alternatively **[yarn](https://yarnpkg.com/lang/en/)** is also considered a good choice.
+- Use a **package manager** as such as **[npm](https://www.npmjs.com/)**. It is provided together with Node.js . Alternatively **[yarn](https://yarnpkg.com/lang/en/)** is also considered a good choice.
 
 
 ## Install dependencies
