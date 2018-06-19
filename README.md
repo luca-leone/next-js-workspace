@@ -44,8 +44,8 @@ Run **one** of the following command:
 
 ## Get started
 
-- Let's start to code and create **new .js files** within **src/** folder. As you can see, 
-**index.js** file represents the **entry point** of the application workspace and **must always** be under **src/ folder**. **All public files must be imported within index.js**. The output **bundle** can be found within **dist/** (it's default name is "**index.js**"). It has also a **commented header** which takes info from **package.json** . Feel free to **replace default info** with the new ones.
+- Let's start to code and create **.js files** within **src/** folder. As you can see, 
+**src/index.js** file represents the **entry point** of the application workspace and **must always** be under **src/ folder**. **All public files must be imported within index.js**. The output **bundle** can be found within **dist/** (it's default name is "**index.js**"). It has also a **commented header** which takes info from **package.json** . Feel free to **replace default info** with the new ones.
 
 - Start compiler: `npm run build` 
 

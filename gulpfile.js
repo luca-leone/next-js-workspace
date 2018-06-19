@@ -37,12 +37,11 @@ function capitalize(name) {
  * All info are taken from package.json file.
  */
 function banner() {
-  var app = capitalize(info.name);
-  var version = info.version;
-  var author = info.author;
-  var license = info.license;
+  var app = ' ' + capitalize(info.name) + ' v' + info.version + '';
+  var author = ' (c) ' + info.author + ' ';
+  var license = ' License: ' + info.license + ''
   
-  return ['/*', ' ' + app +' v' + version + '', ' (c) ' + author + ' ', ' License: ' + license + '', ' */', ''].join('\n');
+  return ['/*', app, author, license, ' */', ''].join('\n');
 }
 
 /**
