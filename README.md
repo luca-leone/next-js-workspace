@@ -1,6 +1,6 @@
 ## Workspace for Modern Javascript Development
 
-This is a minimal **workspace** designed to develop JavaScript applications with the **latest ECMAScript features** both **browser** or **Node.js** environment.
+This is a minimal **workspace** designed to develop JavaScript applications with the **latest ECMAScript** features in order to making them suitables both **browser** or **Node.js** environment.
 
 It is made on **[Babel](https://babeljs.io/)** which compiles modern JavaScript to ECMAScript 5 and uses **[GulpJS](https://gulpjs.com/)** to automate and enhance the workflow. In addition, **configuration files** for **compiler**, **code linter**, **bundler** and IDE settings are provided. 
 
