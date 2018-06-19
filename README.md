@@ -2,7 +2,7 @@
 
 This is a minimal **workspace** designed to develop JavaScript applications with the **latest ECMAScript features** both **browser** or **Node.js** environment.
 
-It is made on **[Babel](https://babeljs.io/)** to compile modern JavaScript in plain ECMAScript 5 and uses **[GulpJS](https://gulpjs.com/)** to automate and enhance the workflow. In addition, **configuration files** for **compiler**, **code linter**, **bundler** and IDE settings are provided. 
+It is made on **[Babel](https://babeljs.io/)** which compiles modern JavaScript to ECMAScript 5 and uses **[GulpJS](https://gulpjs.com/)** to automate and enhance the workflow. In addition, **configuration files** for **compiler**, **code linter**, **bundler** and IDE settings are provided. 
 
 It's recommended to use **[Visual Studio Code](https://code.visualstudio.com/download)** for better development experience. Code **linter** uses **Google's style** recommendations with some little changes that can be found in **.eslintrc** within "rules" object.
 
