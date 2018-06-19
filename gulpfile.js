@@ -53,7 +53,7 @@ function banner() {
 gulp.task('compile:js', function () {
 
   // Check if src/index.js exists. Otherwise creates it. 
-  var content = '/**\n This is workspace entry point.\n Write main application logic and import here all public files here.\n*/\n';
+  var content = '/**\n This is workspace entry point.\n Register here all public files.\n*/\n';
   if (!fs.existsSync('./src/index.js')) fs.writeFileSync('./src/index.js', content);
 
   return gulp.src('src/index.js')
