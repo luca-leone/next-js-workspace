@@ -13,7 +13,7 @@ This workspace is suitable for everyone are looking for a minimal ready to use J
 
 ## Table of contents
 
-- [Download](#quick-start)
+- [Download](#download)
 - [Requirements](#requirements)
 - [Install dependencies](#install-dependencies)
 - [Get started](#get-started)
