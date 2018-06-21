@@ -1,3 +1,2 @@
 gulpfile.js
-build/**/*.js
 dist/**/*.js
