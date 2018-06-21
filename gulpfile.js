@@ -51,8 +51,7 @@ function banner() {
  * @description Clean dist/ folder everytime new start command is launched
  */
 gulp.task('cleaner', function() {
-  return gulp.src('dist/**/*')
-    .pipe(vinylPaths(del));
+  del.sync('dist/**/*');
 });
 
 /**
@@ -94,7 +93,7 @@ gulp.task('compiler', ['compile:js']);
  * and executes an array of tasks to complete before 'watch.
  */
 gulp.task('watcher', function () {
-  var task = gulp.watch('src/**/*.js', ['compile:js']);
+  var task = gulp.watch('src/**/*.js', ['cleaner', 'compile:js']);
 
   // Remove deleted source files from dist/ folder.
   // TODO:
