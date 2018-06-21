@@ -73,7 +73,7 @@ workspace/
   |--- jsconfig.json
   |--- package-lock.json
   |--- package.json
-  |--- LICENSE.md
+  |--- LICENSE
   |--- README.md
 ```
 

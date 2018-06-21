@@ -10,12 +10,14 @@
 
 
 var fs = require('fs');
+var del = require('del');
 var gulp = require('gulp');
 var rollup = require('gulp-better-rollup');
 var babel = require('rollup-plugin-babel');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
 var header = require('gulp-header');
+var vinylPaths = require('vinyl-paths');
 var info = require('./package.json');
 
 
@@ -23,7 +25,7 @@ var info = require('./package.json');
  * @func capitalize
  * @param {string} name
  * @returns {Array<String>} 
- * @description It transforms first word letter uppercase.
+ * @description Capitalize names.
  */
 function capitalize(name) {
   var tmp = (name) ? name.split('-').join(' ') : '';
@@ -40,9 +42,18 @@ function banner() {
   var app = ' ' + capitalize(info.name) + ' v' + info.version + '';
   var author = ' (c) ' + info.author + ' ';
   var license = ' License: ' + info.license + ''
-  
   return ['/*', app, author, license, ' */', ''].join('\n');
 }
+
+/**
+ * @func task
+ * @name cleaner
+ * @description Clean dist/ folder everytime new start command is launched
+ */
+gulp.task('cleaner', function() {
+  return gulp.src('dist/**/*')
+    .pipe(vinylPaths(del));
+});
 
 /**
  * @func task 
@@ -51,13 +62,17 @@ function banner() {
  * minifies the resulting js file. All tasks are made thanks to the following pipeline.
  */
 gulp.task('compile:js', function () {
+  var content = '/**\n' + 
+  '   Application entry point. It must always within src/ folder.\n'+
+  '   Consider it as a place where expose app main modules out of project or\n'+
+  '   to write business logic core.\n' +
+  '*/\n';
 
   // Check if src/index.js exists. Otherwise creates it. 
-  var content = '/**\n This is workspace entry point.\n Register here all public files.\n*/\n';
-  if (!fs.existsSync('./src/index.js')) fs.writeFileSync('./src/index.js', content);
+  if (!fs.existsSync('src/index.js')) fs.writeFileSync('src/index.js', content);
 
-  return gulp.src('src/index.js')
-    .pipe(rollup({ plugins: [babel()] }, 'umd'))
+  return gulp.src('src/**/*')
+    .pipe(rollup({plugins: [babel()]}, 'umd'))
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(uglify())
@@ -79,7 +94,11 @@ gulp.task('compiler', ['compile:js']);
  * and executes an array of tasks to complete before 'watch.
  */
 gulp.task('watcher', function () {
-  gulp.watch("src/**/*.js", ['compile:js']);
+  var task = gulp.watch('src/**/*.js', ['compile:js']);
+
+  // Remove deleted source files from dist/ folder.
+  // TODO:
+
 });
 
 /**
@@ -88,4 +107,4 @@ gulp.task('watcher', function () {
  * First it executes all build processes, then runs watchers 
  * which re-executes the appropriate task streams at every file changes.
  */
-gulp.task('default', ['compiler', 'watcher']);
+gulp.task('default', ['cleaner', 'compiler', 'watcher']);
