@@ -7,4 +7,5 @@
         "configFile": "./.eslintrc"
     },
     "eslint.provideLintTask": true,
+    "eslint.packageManager": "npm",
 }
