@@ -42,7 +42,7 @@ This workspace is suitable for everyone are looking for a minimal and ready to u
 
 ## Get started
 
-- Open **src** folder and let's start to create new **.js files**. As you can see, there is an **index.js** within src. This is app's **entry point** and **must always** exist. Meanwhile developer write, code will be compiled within **dist** folder. 
+- Open **src** folder and let's start to create new js files. **Index.js** within src is app's **entry point** and must always exist.
 
 Every compiled files shows a **commented header** which takes info from **package.json** . Feel free to **replace default info** with the new ones.
 
@@ -60,7 +60,7 @@ workspace/
   |--- src/
   |     |--- <your-file-1>.js
   |     |--- <your-file-2>.js
-  |     └── <your-file-3>.js 
+  |     └──- <your-file-3>.js 
   |
   |--- .babelrc
   |--- .eslintignore
@@ -73,7 +73,7 @@ workspace/
   |--- package-lock.json
   |--- package.json
   |--- LICENSE
-  └── README.md
+  └──- README.md
 ```
 
 
