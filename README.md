@@ -1,6 +1,6 @@
 ## Workspace for Modern Javascript Development
 
-This is a minimal **workspace** designed to develop JavaScript applications with the **latest ECMAScript** features in order to making them suitables both **browser** or **Node.js** environment.
+This is a minimal **workspace** designed to develop JavaScript applications with the **latest ECMAScript** features in order to making them suitables both for **browser** and for **Node.js** environment.
 
 It is made on **[Babel](https://babeljs.io/)** which compiles modern JavaScript to ECMAScript 5 and uses **[GulpJS](https://gulpjs.com/)** to automate and enhance the workflow. In addition, **configuration files** for **compiler**, **code linter**, **bundler** and IDE settings are provided. 
 
@@ -8,7 +8,7 @@ It's recommended to use **[Visual Studio Code](https://code.visualstudio.com/dow
 
 One of workspace's most relevant features is "**hot reload**": everytime a file is saved it will be authomatically compiled and a new build will be available within dist/ folder without run manually any build command from terminal again.
 
-This workspace is suitable for everyone are looking for a minimal ready to use JavaScript development envirnoment. It's is perfect to develop JS libraries but can be also used as starting tool for any particular needs. It can be customized in according to developers needs adding other software as such as broserify or sass compiler.
+This workspace is suitable for everyone are looking for a minimal ready to use JavaScript development envirnoment. It's is perfect to develop JS libraries but can be also used as starting tool for any particular needs. It can be customized in according to developers needs adding other software as such as Express, broserify or sass compiler.
 
 
 ## Table of contents
@@ -37,15 +37,14 @@ This workspace is suitable for everyone are looking for a minimal ready to use J
 
 ## Install dependencies
 
-Run **one** of the following command:
-
 * `npm install`
 
 
 ## Get started
 
-- Let's start to code and create **.js files** within **src/** folder. As you can see, 
-**src/index.js** file represents the **entry point** of the application workspace and **must always** be under **src/ folder**. **All public files must be imported within index.js**. The output **bundle** can be found within **dist/** (it's default name is "**index.js**"). It has also a **commented header** which takes info from **package.json** . Feel free to **replace default info** with the new ones.
+- Open **src** folder and let's start to create new **.js files**. As you can see, there is an **index.js** within src. This is app's **entry point** and **must always** exist. Meanwhile developer write, code will be compiled within **dist** folder. 
+
+Every compiled files shows a **commented header** which takes info from **package.json** . Feel free to **replace default info** with the new ones.
 
 - Start compiler: `npm run build` 
 
