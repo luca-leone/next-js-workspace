@@ -52,7 +52,8 @@ function banner() {
  */
 function checkpoint(callback) {
   var indexHeader = '/**\n' +
-    '   Application entry point. Write the app main business logic and / or exports modules.\n' +
+    '  Application entry point.\n'+ 
+    '  Write the app main business logic and/or exports modules.\n' +
     '*/\n';
 
   // Checks if src/index.js exists. Otherwise creates it. 
