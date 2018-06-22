@@ -23,7 +23,7 @@ var info = require('./package.json');
 /**
  * @func capitalize
  * @param {string} name
- * @returns {string} 
+ * @return {string} 
  * @description Make first letter uppercase.
  */
 function capitalize(name) {
@@ -33,7 +33,7 @@ function capitalize(name) {
 
 /**
  * @func banner
- * @returns {string}
+ * @return {string}
  * @description Add an header comment on dist files containing info 
  * about app author and license.
  * All info are taken from package.json file.
@@ -46,12 +46,12 @@ function banner() {
 }
 
 /**
- * @function play
- * @param {callback} events
+ * @function restore
+ * @return {func}
  * @description Checks if app entry point (index.js) exists. 
  * Otherwise creates it. After a callback is executed. 
  */
-function play(events) {
+function restore() {
   var content = '/**\n' +
     '   Application entry point. It must always within src/ folder.\n' +
     '   Consider it as a place where expose app main modules out of project or\n' +
@@ -61,21 +61,21 @@ function play(events) {
   // Checks if src/index.js exists. Otherwise creates it. 
   // TODO: check if dist/ folder exists
   if (!fs.existsSync('src/index.js')) fs.writeFileSync('src/index.js', content);
-  return (events) ? events() : function() {};
+}
+
+function createDirectory() {
+  return gulp.src('src/**/*').pipe(gulp.dest('dist'));
 }
 
 /**
  * @func task 
  * @name compileJS
  * @param {string}
- * @description Compiles ES6 to ES5 syntax; reduces all files into only one bundle; 
- * minifies the resulting js file. All tasks are made thanks to the following pipeline.
+ * @return {pipeline}
+ * @description Compiles and minifies JS from ES6 to ES5 syntax.
  */
-function compileJS(path = '') {
-    // TODO: add play ehere
-    path = (!path) ? 'src/**/*.js' : path;
-  
-    return gulp.src(path)
+function compileJS() {  
+    return gulp.src('src/**/*.js')
       .pipe(rollup({ plugins: [babel()] }, 'umd'))
       .pipe(jshint())
       .pipe(jshint.reporter('jshint-stylish'))
@@ -84,35 +84,50 @@ function compileJS(path = '') {
       .pipe(gulp.dest('dist'));
 }
 
+function unlink(info) {
+  fs.removeSync(info.target); // Remove file and / or directory.
+  restore();                  // Entry point file must always exists.
+}
+
+function compile() {
+  compileJS();
+  // [..] other compiler
+}
+
 /**
  * @function events
+ * @param {object} info
+ * @return {void}
  * @description Executes a series of tasks. 
  */
-function events() { 
-  compileJS();
-  // Other Tasks [..]
+function events(info) { 
+  if (info.evt === 'unlinkDir' || info.evt === 'unlink') unlink(info);
+  if (info.evt === 'addDir') createDirectory();
+  if (info.evt === 'add') compile();
 }
 
 /**
  * @function observer
- * @description Observes what happens on src folder and run the appropriate stream of tasks.
+ * @return {void}
+ * @description Observes what happens on src folder and take on the appropriate stream of tasks
  */
 function observer() {
   chokidar
     .watch('src/**/*')
-    .on('all', function (evt, path, target) {
-      target = path.replace('src', 'dist');
-      // console.log(evt);
-      if (evt === 'unlinkDir' || evt === 'unlink') fs.removeSync(target);
-      if (evt === 'add' || evt === 'addDir') compileJS(path);
+    .on('all', function (evt, path, info = {}) {
+      events(info = {
+        target: path.replace('src', 'dist'),
+        path: path,
+        evt: evt,
+      });
     }
   );
 }
 
-
 /**
  * @func task
  * @name cleaner
+ * @return {void}
  * @description Clean dist folder everytime new start command is launched.
  */
 gulp.task('cleaner', function () {
@@ -120,16 +135,8 @@ gulp.task('cleaner', function () {
 });
 
 /**
- * @func task
- * @callback compiler
- * @description Executes a stream of defined tasks.
- */
-gulp.task('compiler', function() { 
-  play(events); 
-});
-
-/**
  * @function task
+ * @return {void}
  * @description Default 'Gulp' task. Cleans and runs workspace.
  */
 gulp.task('default', ['cleaner'], function() { 
