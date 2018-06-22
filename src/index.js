@@ -1,4 +1,5 @@
 /**
   Application entry point.
-  Write the app main business logic and/or exports modules.
+  Main business logic and import / exports
+  statements for main modules should take place here.
 */

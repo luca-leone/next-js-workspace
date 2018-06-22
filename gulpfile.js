@@ -45,21 +45,26 @@ function banner() {
 }
 
 /**
+ * @function indexJS
+ * @return {void}
+ * @description Checks if src/index.js exists. Otherwise creates it.
+ */
+function indexJS() {
+  var indexHeader = '/**\n' +
+    '  Application entry point.\n  Main business logic and import / exports\n  statements for main modules should take place here.\n*/\n'; 
+  if (!fs.existsSync('src')) fs.mkdirSync('src');
+  if (!fs.existsSync('src/index.js')) fs.writeFileSync('src/index.js', indexHeader);
+}
+
+/**
  * @function checkpoint
  * @return {pipeline}
  * @description Checks if app entry point (index.js) exists. 
  *              Otherwise creates it. After a callback is executed. 
  */
 function checkpoint(callback) {
-  var indexHeader = '/**\n' +
-    '  Application entry point.\n'+ 
-    '  Write the app main business logic and/or exports modules.\n' +
-    '*/\n';
-
-  // Checks if src/index.js exists. Otherwise creates it. 
-  if (!fs.existsSync('src')) fs.mkdirSync('src');
-  if (!fs.existsSync('src/index.js')) fs.writeFileSync('src/index.js', indexHeader);
-
+  indexJS();
+  // [...] other compiler
   return (callback) ? callback() : function() {};
 }
 
@@ -117,7 +122,7 @@ function compile() {
 function events(info) { 
   if (info.evt === 'unlinkDir' || info.evt === 'unlink') unlink(info);
   if (info.evt === 'addDir') createDirectory();
-  if (info.evt === 'add') compile();
+  if (info.evt === 'add' || info.evt === 'change') compile();
 }
 
 /**
@@ -131,7 +136,8 @@ function observer() {
     chokidar.watch('src/**/*').on('all', function (evt, path, info = {}) {
       events(info = {
         target: path.replace('src', 'dist'),
-        path: path,evt: evt,
+        path: path,
+        evt: evt,
       });
     });
   });
