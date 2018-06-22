@@ -59,7 +59,6 @@ function restore() {
     '*/\n';
 
   // Checks if src/index.js exists. Otherwise creates it. 
-  // TODO: check if dist/ folder exists
   if (!fs.existsSync('src/index.js')) fs.writeFileSync('src/index.js', content);
 }
 
@@ -131,7 +130,7 @@ function observer() {
  * @description Clean dist folder everytime new start command is launched.
  */
 gulp.task('cleaner', function () {
-  fs.removeSync('dist/**/*');
+  fs.removeSync('dist');
 });
 
 /**
