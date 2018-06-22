@@ -42,8 +42,7 @@ This workspace is suitable for everyone are looking for a minimal and ready to u
 
 ## Get started
 
-- Open **src** folder and let's start to create new js files. **Index.js** within src is app's **entry point** and must always exist.
-Every compiled file shows a **commented header** which takes info from **package.json** . Feel free to replace default info with the new ones.
+- Let's start opening **src** folder and creating new js files. **Index.js** within src is app's **entry point** and must always exist.cEvery compiled file shows a **commented header** which takes info from **package.json** . Feel free to replace default info with the new ones.
 
 - Start compiler: `npm run build` 
 
