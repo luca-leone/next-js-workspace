@@ -54,25 +54,25 @@ Within the download you'll find the following directories and files
 
 ```
 workspace/
-  |--- node_modules/
+  |-- node_modules/
   |
-  |--- src/
-  |     |--- <file-1>.js
-  |     |--- <file-2>.js
-  |     └──- <file-3>.js 
+  |-- src/
+  |     |-- <file-1>.js
+  |     |-- <file-2>.js
+  |     └── <file-3>.js 
   |
-  |--- .babelrc
-  |--- .eslintignore
-  |--- .eslintrc
-  |--- .gitignore
-  |--- .jshintrc
-  |--- gulpfile.js
-  |--- index.js
-  |--- jsconfig.json
-  |--- package-lock.json
-  |--- package.json
-  |--- LICENSE
-  └──- README.md
+  |-- .babelrc
+  |-- .eslintignore
+  |-- .eslintrc
+  |-- .gitignore
+  |-- .jshintrc
+  |-- gulpfile.js
+  |-- index.js
+  |-- jsconfig.json
+  |-- package-lock.json
+  |-- package.json
+  |-- LICENSE
+  └── README.md
 ```
 
 
