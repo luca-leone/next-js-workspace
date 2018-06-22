@@ -2,13 +2,13 @@
 
 A minimal **workspace** designed to develop JavaScript applications with the **Latest ECMAScript** features in order to making them suitables both for **browser** and for **Node.js** environment.
 
-It is made on **[Babel](https://babeljs.io/)** which compiles modern JavaScript to ECMAScript 5 and uses **[GulpJS](https://gulpjs.com/)** to automate and enhance the workflow. In addition, **configuration files** for **compiler**, **code linter**, **bundler** and **IDE settings** are provided. 
+It is based on **[Babel](https://babeljs.io/)** which compiles **Modern JavaScript** to ECMAScript 5 and uses **[GulpJS](https://gulpjs.com/)** to automate and enhance the workflow. **Configuration files** for **compiler**, **code linter**, **bundler** and **IDE settings** are provided. 
 
-It's recommended to use **[Visual Studio Code](https://code.visualstudio.com/download)** for better development experience. Code **linter** uses **Google's style** recommendations with some little changes that can be found in **.eslintrc** within "rules" object.
+It's recommended to use **[Visual Studio Code](https://code.visualstudio.com/download)** for better development experience. Code **linter** is based on **Google's style** recommendations with some little changes that can be found in **.eslintrc** within "rules" object.
 
-One of workspace's most relevant features is "**hot reload**": everytime a file is saved it will be authomatically compiled and a new build will be available within dist/ folder without run manually any build command from terminal again.
+One of most relevant features is "**hot reload**": keeping compiler running, a new versions of the files that you edited will be provided within dist at runtime.
 
-This workspace is suitable for everyone are looking for a minimal ready to use JavaScript development envirnoment. It's is perfect to develop JS libraries but can be also used as starting tool for any particular needs. It can be customized in according to developers needs adding other software as such as Express, broserify or sass compiler.
+This workspace is suitable for everyone are looking for a minimal and ready to use JavaScript development envirnoment. It's is perfect to develop JS libraries but can be also used as starting tool for any particular needs. It can be customized in according to developers needs adding other software as such as Express, broserify or sass compiler.
 
 
 ## Table of contents
