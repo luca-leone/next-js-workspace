@@ -4,7 +4,7 @@
     "javascript.validate.enable": false,
     "eslint.enable": true,
     "eslint.options": {
-        "configFile": "eslintrc"
+        "configFile": "./.eslintrc"
     },
     "eslint.provideLintTask": true,
     "eslint.packageManager": "npm",
