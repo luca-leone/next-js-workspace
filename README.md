@@ -1,8 +1,8 @@
 ## Workspace for Modern Javascript Development
 
-This is a minimal **workspace** designed to develop JavaScript applications with the **latest ECMAScript** features in order to making them suitables both for **browser** and for **Node.js** environment.
+A minimal **workspace** designed to develop JavaScript applications with the **Latest ECMAScript** features in order to making them suitables both for **browser** and for **Node.js** environment.
 
-It is made on **[Babel](https://babeljs.io/)** which compiles modern JavaScript to ECMAScript 5 and uses **[GulpJS](https://gulpjs.com/)** to automate and enhance the workflow. In addition, **configuration files** for **compiler**, **code linter**, **bundler** and IDE settings are provided. 
+It is made on **[Babel](https://babeljs.io/)** which compiles modern JavaScript to ECMAScript 5 and uses **[GulpJS](https://gulpjs.com/)** to automate and enhance the workflow. In addition, **configuration files** for **compiler**, **code linter**, **bundler** and **IDE settings** are provided. 
 
 It's recommended to use **[Visual Studio Code](https://code.visualstudio.com/download)** for better development experience. Code **linter** uses **Google's style** recommendations with some little changes that can be found in **.eslintrc** within "rules" object.
 
@@ -60,7 +60,7 @@ workspace/
   |--- src/
   |     |--- <your-file-1>.js
   |     |--- <your-file-2>.js
-  |     |--- <your-file-3>.js 
+  |     └── <your-file-3>.js 
   |
   |--- .babelrc
   |--- .eslintignore
@@ -73,7 +73,7 @@ workspace/
   |--- package-lock.json
   |--- package.json
   |--- LICENSE
-  |--- README.md
+  └── README.md
 ```
 
 
