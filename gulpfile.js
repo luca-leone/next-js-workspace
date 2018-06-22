@@ -34,9 +34,8 @@ function capitalize(name) {
 /**
  * @func banner
  * @return {string}
- * @description Add an header comment on dist files containing info 
- * about app author and license.
- * All info are taken from package.json file.
+ * @description Add an header comment on dist files containing info about author and license.
+ *              All info are taken from package.json file.
  */
 function banner() {
   var app = ' ' + capitalize(info.name) + ' v' + info.version + '';
@@ -46,12 +45,12 @@ function banner() {
 }
 
 /**
- * @function restore
- * @return {func}
+ * @function checkpoint
+ * @return {pipeline}
  * @description Checks if app entry point (index.js) exists. 
- * Otherwise creates it. After a callback is executed. 
+ *              Otherwise creates it. After a callback is executed. 
  */
-function restore() {
+function checkpoint(callback) {
   var content = '/**\n' +
     '   Application entry point. It must always within src/ folder.\n' +
     '   Consider it as a place where expose app main modules out of project or\n' +
@@ -59,35 +58,52 @@ function restore() {
     '*/\n';
 
   // Checks if src/index.js exists. Otherwise creates it. 
+  if (!fs.existsSync('src')) fs.mkdirSync('src');
   if (!fs.existsSync('src/index.js')) fs.writeFileSync('src/index.js', content);
+
+  return (callback) ? callback() : function() {};
 }
 
+/**
+ * @function createDirectory
+ * @returns {pipeline}
+ * @description Creates directory tree within dist based on src folders tree.
+ */
 function createDirectory() {
   return gulp.src('src/**/*').pipe(gulp.dest('dist'));
 }
 
 /**
- * @func task 
- * @name compileJS
- * @param {string}
+ * @function compileJS
  * @return {pipeline}
- * @description Compiles and minifies JS from ES6 to ES5 syntax.
+ * @description Compiles and minifies from ES6 to ES5 syntax.
  */
 function compileJS() {  
-    return gulp.src('src/**/*.js')
-      .pipe(rollup({ plugins: [babel()] }, 'umd'))
-      .pipe(jshint())
-      .pipe(jshint.reporter('jshint-stylish'))
-      .pipe(uglify())
-      .pipe(header(banner(), { info: info }))
-      .pipe(gulp.dest('dist'));
+  return gulp.src('src/**/*.js')
+    .pipe(rollup({ plugins: [babel()] }, 'umd'))
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(uglify())
+    .pipe(header(banner(), { info: info }))
+    .pipe(gulp.dest('dist'));
 }
 
+/**
+ * @function unlink
+ * @param {object} info
+ * @return {void} 
+ * @description Can remove files and /or direcrories.
+ */
 function unlink(info) {
   fs.removeSync(info.target); // Remove file and / or directory.
-  restore();                  // Entry point file must always exists.
+  checkpoint();                  // Entry point file must always exists.
 }
 
+/**
+ * @function compile
+ * @returns {void}
+ * @description Simply runs compilers.
+ */
 function compile() {
   compileJS();
   // [..] other compiler
@@ -108,19 +124,18 @@ function events(info) {
 /**
  * @function observer
  * @return {void}
- * @description Observes what happens on src folder and take on the appropriate stream of tasks
+ * @description Observes what happens on src folder so that 
+ *              it's possible to run the appropriate stream of tasks.
  */
 function observer() {
-  chokidar
-    .watch('src/**/*')
-    .on('all', function (evt, path, info = {}) {
+  checkpoint(function() {
+    chokidar.watch('src/**/*').on('all', function (evt, path, info = {}) {
       events(info = {
         target: path.replace('src', 'dist'),
-        path: path,
-        evt: evt,
+        path: path,evt: evt,
       });
-    }
-  );
+    });
+  });
 }
 
 /**
