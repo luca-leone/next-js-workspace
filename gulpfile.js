@@ -51,15 +51,13 @@ function banner() {
  *              Otherwise creates it. After a callback is executed. 
  */
 function checkpoint(callback) {
-  var content = '/**\n' +
-    '   Application entry point. It must always within src/ folder.\n' +
-    '   Consider it as a place where expose app main modules out of project or\n' +
-    '   to write business logic core.\n' +
+  var indexHeader = '/**\n' +
+    '   Application entry point. Write the app main business logic and / or exports modules.\n' +
     '*/\n';
 
   // Checks if src/index.js exists. Otherwise creates it. 
   if (!fs.existsSync('src')) fs.mkdirSync('src');
-  if (!fs.existsSync('src/index.js')) fs.writeFileSync('src/index.js', content);
+  if (!fs.existsSync('src/index.js')) fs.writeFileSync('src/index.js', indexHeader);
 
   return (callback) ? callback() : function() {};
 }
