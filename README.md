@@ -57,9 +57,9 @@ workspace/
   |--- node_modules/
   |
   |--- src/
-  |     |--- <your-file-1>.js
-  |     |--- <your-file-2>.js
-  |     └──- <your-file-3>.js 
+  |     |--- <file-1>.js
+  |     |--- <file-2>.js
+  |     └──- <file-3>.js 
   |
   |--- .babelrc
   |--- .eslintignore
